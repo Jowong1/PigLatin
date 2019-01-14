@@ -35,9 +35,13 @@ public int findFirstVowel(String sWord){
   return -1;
 }
 
-//public int beginConsonant(String sWord){
-  
-//}
+public int leadingConsonsants(String sWord){
+  int num = 0;
+  while(sWord.substring(num,num + 1).equals("a") == false && sWord.substring(num,num + 1).equals("e") == false && sWord.substring(num,num + 1).equals("i") == false && sWord.substring(num,num + 1).equals("o") == false && sWord.substring(num,num + 1).equals("u") == false){
+    num++;
+  }
+  return num;
+}
 public int beginQu(String sWord){
   if(sWord.substring(0,2).equals("qu")){
     return 1;
@@ -51,7 +55,7 @@ public String pigLatin(String sWord)
 {
 	if(findFirstVowel(sWord) == -1){
 		return sWord + "ay";
-  }else if(findFirstVowel(sWord) == -2 && sWord.substring(0,2).equals("qu") == false){
+  }else if(sWord.substring(0,1).equals("a") || sWord.substring(0,1).equals("e") || sWord.substring(0,1).equals("i") || sWord.substring(0,1).equals("o") || sWord.substring(0,1).equals("u")){
     return sWord + "way";
   }else if(beginQu(sWord) == 1){
     return sWord.substring(2) + "quay";
