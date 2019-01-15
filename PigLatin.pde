@@ -1,3 +1,4 @@
+int n = 0;
 public void setup() 
 {
 	String[] lines = loadStrings("words.txt");
@@ -14,11 +15,6 @@ public void draw()
 public int findFirstVowel(String sWord){
 //precondition: sWord is a valid String of length greater than 0.
 //postcondition: returns the position of the first vowel in sWord.  If there are no vowels, returns -1
-  int a = sWord.indexOf("a");
-  int e = sWord.indexOf("e");
-  int i = sWord.indexOf("i");
-  int o = sWord.indexOf("o");
-  int u = sWord.indexOf("u");
   for(int num = 0; num < sWord.length(); num++){
     if(sWord.substring(num, num + 1).equals("a")){
       return -2;
@@ -36,11 +32,10 @@ public int findFirstVowel(String sWord){
 }
 
 public int leadingConsonsants(String sWord){
-  int num = 0;
-  while(sWord.substring(num,num + 1).equals("a") == false && sWord.substring(num,num + 1).equals("e") == false && sWord.substring(num,num + 1).equals("i") == false && sWord.substring(num,num + 1).equals("o") == false && sWord.substring(num,num + 1).equals("u") == false){
-    num++;
+  while(sWord.substring(n,n + 1).equals("a") == false && sWord.substring(n,n + 1).equals("e") == false && sWord.substring(n,n + 1).equals("i") == false && sWord.substring(n,n + 1).equals("o") == false && sWord.substring(n,n + 1).equals("u") == false){
+    n++;
   }
-  return num;
+  return n;
 }
 public int beginQu(String sWord){
   if(sWord.substring(0,2).equals("qu")){
@@ -60,9 +55,9 @@ public String pigLatin(String sWord)
   }else if(beginQu(sWord) == 1){
     return sWord.substring(2) + "quay";
   
-  }/*else if(beginConsonant(sWord) == 0){
-    
-	}*/else{
+  }else if(leadingConsonsants(sWord) != 0){
+    return sWord.substring(n) + sWord.substring(0,n) + "ay";
+	}else{
 		return "ERROR!";
 	}
 }
